@@ -21,6 +21,13 @@ app.config["SECRET_KEY"] = '450922fba6e46eeb36b12d8a7635aa92836d3dbe'
 @app.route("/login")
 def login():
     form = LoginForm()
+      if form.validate_on_submit():
+         if form.email.data == "jj@gmail.com" and form.password.data =="password":
+            flash('You have been logged in', 'success')
+            return redirect(url_for('index'))
+    else:
+        flash('Login unsucessful.Please check username and password')
+
     return render_template("login.html", form = form)  #title="login"
 
 
