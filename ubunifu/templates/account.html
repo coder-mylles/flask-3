@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<div class="contentsection">
+<div class="container contentsection">
     <div class="media">
         <img src="{{ image_file }}" class="rounded-circle account-img">
         <div class="media-body">
@@ -16,16 +16,16 @@
 
 
     <div class="content-section">
-        <form method="POST" action=""> #enctype="multipart/form-data"
+        <form method="POST" action="">
             {{ form.hidden_tag() }}
 
-
+    
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Account Info</legend>
-
+    
                 <div class="form-group">
                     {{ form.username.label(class="form-control-label")}}
-
+    
                     {% if form.username.errors %}
                     {{ form.username(class="form-control form-control-lg is-invalid")}}
                     <div class="invalid-feedback">
@@ -37,7 +37,7 @@
                 {{ form.username(class="form-control form-control-lg")}}
                 {% endif %}
     </div>
-
+    
     <div class="form-group">
     {{ form.email.label(class="form-control-label")}}
     {% if form.email.errors %}
@@ -50,17 +50,17 @@
     {% else %}
     {{ form.email(class="form-control form-control-lg")}}
     {% endif %}
-
+    
     </div>
-
-
-
-
+    
+    
+    
+    
     </fieldset>
-
+    
     <div class="form-group">
         {{ form.submit(class="btn btn-outline-info")}}
-
+    
     </form>
     </div>
 
@@ -69,4 +69,4 @@
 
 </div>
 
-{% endblock content %} 
+{% endblock content %}

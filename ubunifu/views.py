@@ -5,13 +5,18 @@ from ubunifu import app, db ,bcrypt
 from ubunifu.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
 from ubunifu.models import User,Post 
 from flask_login import login_user,current_user,login_required,logout_user
+
+
+
 @app.route("/")
 @app.route("/home")
 def index():
-    # title = "Ubunifu;the creatives haven"
     posts = Post.query.all()
-    return render_template('index.html', posts=posts )     #title='title'
+    return render_template('index.html', posts=posts[::-1] )    
+
+
 # ----------------------------REGISTER ROUTE-------------------------
+
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -25,7 +30,10 @@ def register():
         flash('Account has been  created,you can log in.', 'success')
         return redirect(url_for('login'))
     return render_template("register.html",title="Register", form = form) 
+
+
 # --------------------------LOG IN ROUTE-------------------------------
+
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -40,6 +48,11 @@ def login():
         else:
             flash('Login unsucessful.Please check username and password', 'danger')
     return render_template("login.html",title="Login", form = form)  
+
+
+
+
+
 @app.route("/logout")
 def logout():
     logout_user()
@@ -99,13 +112,10 @@ def new_post():
 
 # TemplateSyntaxError: expected token ',', got 'post_id'
 
-# @app.route("/post/<int:post_id>/update")
-@app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
+@app.route("/post/<int:post_id>")
 def post(post_id):
     post = Post.query.get_or_404(post_id)
     return render_template('post.html',title=post.title, post=post)
-
-
 
 # ValueError: malformed url rule: '/post/<int:post_id/update>'..........FIND error
 
@@ -127,6 +137,19 @@ def update_post(post_id):
         form.title.data = post.title
         form.content.data = post.content
     return render_template('create_post.html', title= 'Update Post', form=form, legend='Update Post', )
+
+
+
+@app.route("/post/<int:post_id>/delete", methods=['GET','POST'])
+@login_required
+def delete_post(post_id):
+    post = Post.query.get_or_404(post_id)
+    if post.author != current_user:
+        abort(403)
+    db.session.delete(post)
+    db.session.commit()
+    flash('Your post has been deleted!', 'success')
+    return redirect(url_for('index'))
 
 
 
