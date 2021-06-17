@@ -1,41 +1,78 @@
 <!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
-        {% if title %}
-        <title>Ubunifu - {{ title }} </title>
-        {% else%}
-        <title>UBUNIFU:The creatives Haven</title> 
-        {% endif %}    
+<html>
+<head>
+    <meta charset="utf-8">
+    {% if title %}
+    <title>Ubunifu - {{ title }} </title>
+    {% else%}
+    <title>UBUNIFU:The creatives Haven</title>
+    {% endif %}
 
-  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='index.css') }}" >
+
+
+
+</head>
+<body>
 
 
        <section>
-           
-       </section>
-       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar w/ text</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Sign Up</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Login</a>
-            </li>
-          </ul>
-          <span class="navbar-text">
-            Navbar text with an inline element
-          </span>
-        </div>
-      </nav>
 
+
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navbar text</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+
+                 {% if current_user.is_authenticated %} 
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('new_post')}}">New Post</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('account')}}">Account</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('logout')}}">Log Out</a>
+                </li>
+                {% else %}
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('register')}}">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('login')}}">Login</a>
+                </li>
+              </ul>
+              <span class="navbar-text">
+                Navbar text with an inline element
+              </span>
+            </div>
+          </nav>
+           {% endif %} 
+
+
+       </section>
+{% with messages = get_flashed_messages(with_categories = true) %}
+{% if messages%}
+{% for category,message in messages %}
+
+<div class="alert alert-{{ category }}">
+
+</div>
+{% endfor%}
+{% endif %}
+{% endwith %}
 {% block content%}
 {% endblock %}
 
@@ -46,4 +83,4 @@
 
 
     </body>
-</html> 
+</html>
