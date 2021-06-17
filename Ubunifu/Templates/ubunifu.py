@@ -30,6 +30,7 @@ class Post(db.Model):
 
 
 
+
 @app.route("/")
 def index():
     title = "Ubunifu;the creatives haven"
