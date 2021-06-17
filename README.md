@@ -51,9 +51,8 @@ python3 run.py
 * The upvote functionality does not work as expected.
 
 # Support and Contact Details
-For any comments,suggestions,feedback or inquiries, contact me via email: ndundirokamau@gmail.com
-
+For any comments,suggestions,feedback or inquiries, contact me via email: martin.mylles@student.moringaschool.com
 # License
 MIT License
 
-Copyright © 2019 Ndundiro Kamau
+Copyright © 2021 Martin Mylles
