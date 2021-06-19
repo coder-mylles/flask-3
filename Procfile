@@ -1,1 +1,1 @@
-web: gunicorn ubunifu:app
+web: gunicorn manage:app

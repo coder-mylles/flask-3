@@ -1,0 +1,45 @@
+{% extends 'base.html'%} {% import 'macros.html' as macro%} {% import 'bootstrap/wtf.html' as wtf %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">{% if title %}
+    <title> {{title}}</title>
+    <!-- <title>Home - Welcome to The Pitches of The Century</title>{% endif %} -->
+    <!-- Styles block -->
+    {% block styles%} {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/pitch.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Tenali+Ramakrishna&display=swap" rel="stylesheet"> {% endblock %}
+</head>
+
+<body>
+    {% block content %} {{super()}}
+    <div class="text-center ">
+        <h2>ALL PITCHES</h2>
+        <nav aria-label="">
+            <ul class="pagination justify-content-center">
+
+                <li class="page-item">
+                    <a class="page-link" href="{{url_for('main.pickup')}}">Pickup Lines</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="{{url_for('main.interview')}}">Interview</a>
+                    <li class="page-item ">
+                        <a class="page-link " href="{{url_for( 'main.promotion')}} ">Promotion</a>
+                    </li>
+                    <li class="page-item ">
+                        <a class="page-link " href="{{url_for( 'main.product')}} ">Product</a>
+                    </li>
+            </ul>
+        </nav>
+
+        <div class="row">
+            <div class="">{{macro.showPitch(general)}}</div>
+        </div>
+
+    </div>
+    {% endblock %}
+</body>
+
+</html>
