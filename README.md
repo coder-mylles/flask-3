@@ -10,7 +10,7 @@ Pitches is a flask web app that allows users to submit their one minute pitches.
 
 # Screenshot
 
-<img src="" width="1000">
+<img src="https://github.com/martin-moringa/flask-3/blob/main/pitch.png" width="1000">
 
 # User Story
 
