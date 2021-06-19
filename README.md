@@ -1,10 +1,10 @@
-# Ubunifu-Pitch
+# Pitches
 
 # Author 
 Martin Mylles
 
 # Description 
-Ubunifu-Pitch is a flask web app that allows users to submit their one minute pitches.The pitches must sign up and login inorder to submit.Others users can view but can only upvote or downvote if they are signed in.A pitch can only be deleted by the user that posted it.
+Pitches is a flask web app that allows users to submit their one minute pitches.The pitches must sign up and login inorder to submit.Others users can view but can only upvote or downvote if they are signed in.A pitch can only be deleted by the user that posted it.
 
 # Live link
 
