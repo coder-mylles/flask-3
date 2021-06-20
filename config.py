@@ -5,7 +5,7 @@ class Config:
     '''
     
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://alufwany:alufwany@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://Martin:5134.Nyando@localhost/db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
     
@@ -45,7 +45,7 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://alufwany:alufwany@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://Martin:5134.Nyando@localhost/db'
 
     DEBUG = True
 
